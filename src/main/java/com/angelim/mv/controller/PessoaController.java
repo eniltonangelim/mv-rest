@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.angelim.mv.model.Pessoa;
 import com.angelim.mv.service.PessoaService;
 
-@CrossOrigin("*")
+import ch.qos.logback.classic.net.SyslogAppender;
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/api/pessoa", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PessoaController {
@@ -46,6 +48,7 @@ public class PessoaController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoaBody, @PathVariable Long id) {
+    	System.out.println(pessoaBody.getNome());
     	return ResponseEntity.ok(
     			pessoaService.save(
     					pessoaService.findById(id)

@@ -30,8 +30,7 @@ public class Pessoa implements Serializable {
 	private String email;
 	
 	@OneToMany(
-			cascade = CascadeType.ALL,
-			orphanRemoval = true)
+			cascade = CascadeType.ALL)
 	@OrderColumn(name="id")
 	private Telefone[] telefones;
 	
